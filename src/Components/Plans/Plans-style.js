@@ -25,6 +25,10 @@ export const Plan = styled.div`
     margin: 0 0 20px 0;
     cursor: pointer;
     
+    Plan:hover {
+        background-color: red;
+    }
+
 p {
     width: 50%;
     height: 100%;
