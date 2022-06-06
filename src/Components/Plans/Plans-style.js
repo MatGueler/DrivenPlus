@@ -9,11 +9,6 @@ h1 {
     color: #FFFFFF;
     margin: 20px 0;
     font-weight: bold;
-    z-index: 1;
-}
-
-& h1:active{
-    color: red;
 }
 `
 

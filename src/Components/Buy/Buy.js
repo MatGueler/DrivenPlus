@@ -1,6 +1,7 @@
 import { Main, Logo, Info, Benefits, Price, Form, Card } from './Buy-style'
 import { Container } from "../Container/Container"
 import { FaMoneyBillWave } from 'react-icons/fa';
+import Confirmation from './Confirmation/Confirmation';
 import { Icon } from '@iconify/react';
 import { Input } from "../Input/Input";
 import { Button } from '../Button/Button';
@@ -30,15 +31,16 @@ function Buy() {
                     </Price>
                 </Info>
                 <Form>
-                    <Input placeholder='Nome impresso no cartão'/>
-                    <Input placeholder='Digitos do cartão'/>
+                    <Input placeholder='Nome impresso no cartão' />
+                    <Input placeholder='Digitos do cartão' />
                     <Card>
-                        <input placeholder='Código de segurança'/>
-                        <input placeholder='Validade'/>
+                        <input placeholder='Código de segurança' />
+                        <input placeholder='Validade' />
                     </Card>
                     <Button>ASSINAR</Button>
                 </Form>
             </Main>
+            {true ? '' : <Confirmation />}
         </Container>
     )
 }
