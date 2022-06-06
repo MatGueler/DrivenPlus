@@ -1,8 +1,12 @@
 import '../Login/Login-style'
 import { Button } from '../Button/Button';
-import { Container, Main, Input } from '../Login/Login-style';
+import { useNavigate } from "react-router-dom";
+import { Main } from '../Login/Login-style';
+import { Input } from '../Input/Input';
+import { Container } from '../Container/Container';
 
 function Register() {
+    let navigate = useNavigate();
     return (
 
         <Container>
@@ -14,7 +18,7 @@ function Register() {
                     <Input placeholder='Senha' />
                     <Button>CADASTRAR</Button>
                 </form>
-                <p>Já possuí uma conta? Entre</p>
+                <p onClick={() => navigate('/')}>Já possuí uma conta? Entre</p>
             </Main>
         </Container>
     );

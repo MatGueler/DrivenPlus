@@ -1,14 +1,5 @@
 import styled from 'styled-components'
 
-export const Container = styled.div`
-width: 100%;
-height: 100%;
-position: absolute;
-display: flex;
-justify-content: center;
-align-items: center;
-`
-
 export const Logo = styled.div`
 display: flex;
 `
@@ -41,11 +32,4 @@ margin: 20px 0;
 text-decoration: underline;
 cursor: pointer;
 }
-`
-
-export const Input = styled.input`
-height: 50px;
-border: 0;
-border-radius: 10px;
-margin-bottom: 10px;
 `
