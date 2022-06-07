@@ -2,6 +2,10 @@ import styled from 'styled-components'
 
 export const Logo = styled.div`
 display: flex;
+
+img {
+    margin-bottom: 80px;
+}
 `
 
 export const Main = styled.div`
