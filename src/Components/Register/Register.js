@@ -19,8 +19,11 @@ function Register() {
         const URL = 'https://mock-api.driven.com.br/api/v4/driven-plus/auth/sign-up'
         const promise = axios.post(URL, body)
 
-        promise.then((response) => { console.log(response) })
-            .catch((err) => { console.log(err) })
+        promise.then((response) => { 
+            console.log(response)
+            navigate('/')
+        })
+            .catch((err) => alert('Deu erro!'))
     }
 
     function User(event) {

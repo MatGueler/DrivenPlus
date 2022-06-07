@@ -1,5 +1,5 @@
 import { Container, Menu, Logo, Profile, Advantage, Changes, Main, Cancel } from "./Home-style";
-import logo from '../../Assets/Images/logo.png'
+import normal from '../../Assets/Images/normal.png'
 import { FaUserCircle } from 'react-icons/fa';
 import { Button } from "../Button/Button";
 import { GoPlus } from 'react-icons/go';
@@ -11,7 +11,7 @@ function Home() {
         <Container>
             <Menu>
                 <Logo>
-                    <img src={logo} /><GoPlus size={35} color='#FF4791' />
+                    <img src={normal} /><GoPlus size={35} color='#FF4791' />
                 </Logo>
                 <Profile>
                     <FaUserCircle size={40} color='#FFFFFF' />

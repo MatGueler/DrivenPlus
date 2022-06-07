@@ -47,7 +47,7 @@ export const Logo = styled.div`
     justify-content: center;
     align-items: center;
     
-h2 {
-    font-size: 80px;
+img {
+    width: 120px;
 }
 `

@@ -4,6 +4,8 @@ import { GoPlus } from 'react-icons/go';
 import { Button } from '../Button/Button';
 import { Container } from '../Container/Container';
 import { Main, Logo } from '../Login/Login-style';
+import { useContext } from 'react';
+import InfosContext from '../Contexts/InfosContext';
 import { Input } from '../Input/Input'
 import { useState } from 'react';
 import axios from 'axios';
@@ -14,6 +16,7 @@ function Login() {
     let navigate = useNavigate()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const { setToken } = useContext(InfosContext)
 
     function signUp(event) {
         event.preventDefault();
@@ -25,8 +28,11 @@ function Login() {
 
         const promise = axios.post(URL, body)
 
-        promise.then(() => { navigate('/subscriptions') })
-            .catch((err) => console.log(err))
+        promise.then((response) => {
+            setToken(response.data.token)
+            { (response.data.membership === null) ? navigate('/subscriptions') : navigate('/home') }
+        })
+        promise.catch((err) => alert('Deu erro!'))
     }
 
     return (

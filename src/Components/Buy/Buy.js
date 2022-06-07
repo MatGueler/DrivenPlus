@@ -5,10 +5,15 @@ import Confirmation from './Confirmation/Confirmation';
 import { Icon } from '@iconify/react';
 import { Input } from "../Input/Input";
 import { Button } from '../Button/Button';
+import { useEffect } from 'react';
 
 
 
 function Buy() {
+
+    useEffect(() => {
+        
+    })
 
     return (
         <Container>
