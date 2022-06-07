@@ -4,14 +4,29 @@ import InfosContext from "../Contexts/InfosContext";
 import { FaUserCircle } from 'react-icons/fa';
 import { Button } from "../Button/Button";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
+
+function DeletPlan({ token, navigate }) {
+
+    const URL = 'https://mock-api.driven.com.br/api/v4/driven-plus/subscriptions'
+
+    const config = {
+        headers: {
+            "Authorization": `Bearer ${token}`
+        }
+    }
+
+    const promise = axios.delete(URL, config)
+
+    promise.then((response) => { navigate('/subscriptions') })
+        .catch((err) => alert(err))
+}
 
 
 function Home() {
 
     const { token, infos } = useContext(InfosContext);
-
-    console.log(infos.image)
 
     let navigate = useNavigate()
 
@@ -31,7 +46,7 @@ function Home() {
                 </Advantage>
                 <Changes>
                     <Button onClick={() => { navigate('/subscriptions') }}>Mudar plano</Button>
-                    <Cancel color='#FF4747'>Cancelar plano</Cancel>
+                    <Cancel color='#FF4747' onClick={() => DeletPlan({ token, navigate })}>Cancelar plano</Cancel>
                 </Changes>
             </Main>
 
