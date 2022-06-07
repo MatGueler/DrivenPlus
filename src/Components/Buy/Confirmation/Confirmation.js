@@ -19,8 +19,8 @@ function Confirmation({ confirm, setConfirm, body, token, setInfos }) {
         const promise = axios.post(URL, body, config)
 
         promise.then((response) => {
+            setInfos(response.data.membership)
             navigate('/home')
-            setInfos(response.data)
         })
             .catch((err) => console.log(err))
     }

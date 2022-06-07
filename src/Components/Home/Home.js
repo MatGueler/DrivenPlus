@@ -1,16 +1,19 @@
 import { Container, Menu, Logo, Profile, Advantage, Changes, Main, Cancel } from "./Home-style";
-import { useEffect, useContext, useState } from "react";
+import { useContext } from "react";
 import InfosContext from "../Contexts/InfosContext";
-import normal from '../../Assets/Images/normal.png'
 import { FaUserCircle } from 'react-icons/fa';
 import { Button } from "../Button/Button";
-import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 
 
 function Home() {
 
     const { token, infos } = useContext(InfosContext);
+
+    console.log(infos.image)
+
+    let navigate = useNavigate()
 
     return (
         <Container>
@@ -27,7 +30,7 @@ function Home() {
                     {(infos.perks).map((item, index) => <Button key={index}>{item.title}</Button>)}
                 </Advantage>
                 <Changes>
-                    <Button>Mudar plano</Button>
+                    <Button onClick={() => { navigate('/subscriptions') }}>Mudar plano</Button>
                     <Cancel color='#FF4747'>Cancelar plano</Cancel>
                 </Changes>
             </Main>
