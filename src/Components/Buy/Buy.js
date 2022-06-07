@@ -5,15 +5,34 @@ import Confirmation from './Confirmation/Confirmation';
 import { Icon } from '@iconify/react';
 import { Input } from "../Input/Input";
 import { Button } from '../Button/Button';
-import { useEffect } from 'react';
-
+import { useContext, useState } from 'react';
+import InfosContext from '../Contexts/InfosContext';
 
 
 function Buy() {
 
-    useEffect(() => {
-        
-    })
+    const [cardName, setCardName] = useState('')
+    const [cardNumber, setCardNumber] = useState('')
+    const [securityNumber, setSecurityNumber] = useState('')
+    const [expirationDate, setExpirationDate] = useState('')
+    const [confirm, setConfirm] = useState(true)
+    const [body, setBody] = useState('')
+    const { token, idPlan, setInfos } = useContext(InfosContext)
+
+    function SignPlan(event) {
+        event.preventDefault();
+
+        const body = {
+            membershipId: idPlan,
+            cardName,
+            cardNumber,
+            securityNumber,
+            expirationDate
+        }
+
+        setBody(body)
+        setConfirm(!confirm)
+    }
 
     return (
         <Container>
@@ -35,17 +54,17 @@ function Buy() {
                         <h2>R$ 39,99</h2>
                     </Price>
                 </Info>
-                <Form>
-                    <Input placeholder='Nome impresso no cartão' />
-                    <Input placeholder='Digitos do cartão' />
+                <Form onSubmit={SignPlan}>
+                    <Input type='text' placeholder='Nome impresso no cartão' onChange={(e) => { setCardName(e.target.value) }} value={cardName} />
+                    <Input type='text' placeholder='Digitos do cartão' onChange={(e) => { setCardNumber(e.target.value) }} value={cardNumber} />
                     <Card>
-                        <input placeholder='Código de segurança' />
-                        <input placeholder='Validade' />
+                        <input type='text' placeholder='Código de segurança' onChange={(e) => { setSecurityNumber(e.target.value) }} value={securityNumber} />
+                        <input type='text' placeholder='Validade' onChange={(e) => { setExpirationDate(e.target.value) }} value={expirationDate} />
                     </Card>
                     <Button>ASSINAR</Button>
                 </Form>
             </Main>
-            {true ? '' : <Confirmation />}
+            {confirm ? '' : <Confirmation confirm={confirm} setConfirm={setConfirm} body={body} token={token} setInfos={setInfos} />}
         </Container>
     )
 }

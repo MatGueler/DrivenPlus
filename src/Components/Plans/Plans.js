@@ -9,9 +9,13 @@ import { useNavigate } from "react-router-dom";
 function AddPlan({ item }) {
 
     let navigate = useNavigate()
+    const { setIdPlan } = useContext(InfosContext)
 
     return (
-        <Plan onClick={() => { navigate(`/subscriptions/${item.id}`) }}>
+        <Plan onClick={() => {
+            setIdPlan(item.id)
+            navigate(`/subscriptions/${item.id}`)
+        }}>
             <Logo>
                 <img src={item.image} alt={item.id} />
             </Logo>

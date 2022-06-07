@@ -16,7 +16,7 @@ function Login() {
     let navigate = useNavigate()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const { setToken } = useContext(InfosContext)
+    const { setToken, setInfos } = useContext(InfosContext)
 
     function signUp(event) {
         event.preventDefault();
@@ -30,7 +30,13 @@ function Login() {
 
         promise.then((response) => {
             setToken(response.data.token)
-            { (response.data.membership === null) ? navigate('/subscriptions') : navigate('/home') }
+            setInfos(response.data.membership)
+            {
+                (response.data.membership === null) ?
+                    navigate('/subscriptions')
+                    :
+                    navigate('/home')
+            }
         })
         promise.catch((err) => alert('Deu erro!'))
     }

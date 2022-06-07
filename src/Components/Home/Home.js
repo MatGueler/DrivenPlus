@@ -1,17 +1,22 @@
 import { Container, Menu, Logo, Profile, Advantage, Changes, Main, Cancel } from "./Home-style";
+import { useEffect, useContext, useState } from "react";
+import InfosContext from "../Contexts/InfosContext";
 import normal from '../../Assets/Images/normal.png'
 import { FaUserCircle } from 'react-icons/fa';
 import { Button } from "../Button/Button";
-import { GoPlus } from 'react-icons/go';
+import axios from "axios";
+
 
 
 function Home() {
+
+    const { token, infos } = useContext(InfosContext);
 
     return (
         <Container>
             <Menu>
                 <Logo>
-                    <img src={normal} /><GoPlus size={35} color='#FF4791' />
+                    <img src={infos.image} />
                 </Logo>
                 <Profile>
                     <FaUserCircle size={40} color='#FFFFFF' />
@@ -19,8 +24,7 @@ function Home() {
             </Menu>
             <Main>
                 <Advantage>
-                    <Button >Solicitar brindes</Button>
-                    <Button >Materiais bônus de web</Button>
+                    {(infos.perks).map((item, index) => <Button key={index}>{item.title}</Button>)}
                 </Advantage>
                 <Changes>
                     <Button>Mudar plano</Button>

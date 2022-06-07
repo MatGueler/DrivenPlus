@@ -11,11 +11,13 @@ import Buy from '../Buy/Buy';
 function App() {
 
   const [token, setToken] = useState('')
+  const [idPlan, setIdPlan] = useState('')
+  const [infos, setInfos] = useState('')
 
 
   return (
     <BrowserRouter>
-      <InfosContext.Provider value={{ token, setToken }}>
+      <InfosContext.Provider value={{ token, setToken, idPlan, setIdPlan, infos, setInfos }}>
         <Routes>
           <Route path='/' element={<Login />} />
           <Route path='/sign-up' element={<Register />} />
